@@ -3,7 +3,7 @@ Vue.component('calc', {
     <div>
         Quantity :
         <input type="number" v-model="quantity" @keyup="calclulation">
-        x € {{ price }} + {{ free }}
+        x € {{ price }} = € {{ total }}
     </div>
     `,
 
