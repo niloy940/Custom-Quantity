@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Custome Quantity
+ * Plugin Name: Custom Quantity
  * Description: Woocommerce Product Page Development.
  * Version: 1.7.2
  * Author: Niloy Quazi
