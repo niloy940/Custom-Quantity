@@ -10,7 +10,7 @@ function qt_show_quantity()
     $sale_price = $product->get_sale_price();
 
     global $quantity;
-    $quantity = 200;
+    $quantity = 100;
 
     echo "<div id='quantity_el'>"
     .'<br>'

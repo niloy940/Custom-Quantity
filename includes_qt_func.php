@@ -10,7 +10,7 @@ function jk_woocommerce_quantity_input_args($args, $product)
     if (is_singular('product')) {
         $args['input_value']    = $quantity;    // Starting value (we only want to affect product pages, not cart)
     }
-    $args['max_value']  = 50000;   // Maximum value
+    // $args['max_value']  = 500000;   // Maximum value
     $args['min_value']  = 100;    // Minimum value
     $args['step']       = 2;    // Quantity steps
     return $args;
