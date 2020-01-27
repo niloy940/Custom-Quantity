@@ -4,12 +4,17 @@ Vue.component('calc', {
         Quantity :
         <input type="number" v-model="quantity" @keyup="calclulation">
         x € {{ price }} = € {{ total }}
+
+        <br>
+        <p v-if="minorder" style="color:red;">Minimum Order : {{ morder }} pieces!</p>
     </div>
     `,
 
     data() {
         return {
             total: '',
+            morder: '',
+            minorder: false,
         }
     },
 
@@ -29,8 +34,10 @@ Vue.component('calc', {
           }
 
           if (this.quantity < 100) {
-            alert('Minimum order : 100 pieces!');
-            this.quantity = 100;
+            this.minorder = true;
+            this.morder = 100;
+          } else {
+            this.minorder = false;
           }
 
         } else if (this.product_id == 21) {
@@ -48,8 +55,10 @@ Vue.component('calc', {
           }
 
           if (this.quantity < 25) {
-            alert('Minimum order : 25 pieces!');
-            this.quantity = 25;
+            this.minorder = true;
+            this.morder = 25;
+          } else {
+            this.minorder = false;
           }
 
         }
