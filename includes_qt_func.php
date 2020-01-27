@@ -11,7 +11,7 @@ function jk_woocommerce_quantity_input_args($args, $product)
         $args['input_value']    = $quantity;    // Starting value (we only want to affect product pages, not cart)
     }
     // $args['max_value']  = 500000;   // Maximum value
-    $args['min_value']  = 100;    // Minimum value
+    $args['min_value']  = $quantity;    // Minimum value
     $args['step']       = 2;    // Quantity steps
     return $args;
 }
@@ -45,21 +45,46 @@ function add_custom_price($cart_object)
         $cart_quantity = $value['quantity'];
     }
 
+    // global $product;
+
+
     foreach ($cart_object->get_cart() as $cart_item) {
         // Price calculation
         // $price = $cart_item['data']->get_price();
 
-        if ($cart_quantity <= 249) {
-            $price = 0.69;
-        } elseif ($cart_quantity >= 250 && $cart_quantity <= 499) {
-            $price = 0.59;
-        } elseif ($cart_quantity >= 500 && $cart_quantity <= 999) {
-            $price = 0.55;
-        } elseif ($cart_quantity >= 1000) {
-            $price = 0.49;
-        } else {
-            $price = 0.69;
+        $product_id = $cart_item['product_id'];
+        // Pen Klasico
+        if ($product_id == 11) {
+            if ($cart_quantity >= 100 && $cart_quantity <= 249) {
+                $price = 0.69;
+            } elseif ($cart_quantity >= 250 && $cart_quantity <= 499) {
+                $price = 0.59;
+            } elseif ($cart_quantity >= 500 && $cart_quantity <= 999) {
+                $price = 0.55;
+            } elseif ($cart_quantity >= 1000) {
+                $price = 0.49;
+            } else {
+                $price = 0.69;
+            }
+
+            $cart_item['data']->set_price($price);
         }
-        $cart_item['data']->set_price($price); // WC 3.0+
+
+        // Pen Artio
+        if ($product_id == 21) {
+            if ($cart_quantity >= 25 && $cart_quantity <= 49) {
+                $price = 5.99;
+            } elseif ($cart_quantity >= 50 && $cart_quantity <= 74) {
+                $price = 5.49;
+            } elseif ($cart_quantity >= 75 && $cart_quantity <= 99) {
+                $price = 5.10;
+            } elseif ($cart_quantity >= 100) {
+                $price = 4.99;
+            } else {
+                $price = 5.99;
+            }
+
+            $cart_item['data']->set_price($price);
+        }
     }
 }
