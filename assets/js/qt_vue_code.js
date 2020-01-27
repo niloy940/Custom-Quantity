@@ -9,7 +9,7 @@ Vue.component('calc', {
 
     data() {
         return {
-            total: 69,
+            total: '',
         }
     },
 
@@ -28,6 +28,11 @@ Vue.component('calc', {
               this.price = 0.69;
           }
 
+          if (this.quantity < 100) {
+            alert('Minimum order : 100 pieces!');
+            this.quantity = 100;
+          }
+
         } else if (this.product_id == 21) {
 
           if (this.quantity >= 25 && this.quantity <= 49) {
@@ -41,6 +46,12 @@ Vue.component('calc', {
           } else {
               this.price = 5.99;
           }
+
+          if (this.quantity < 25) {
+            alert('Minimum order : 25 pieces!');
+            this.quantity = 25;
+          }
+
         }
 
 
@@ -86,6 +97,8 @@ Vue.component('calc', {
     var cvalue = this.quantity;
     var cname = "quantity";
     document.cookie = cname + "=" + cvalue;
+
+    this.calclulation();
   },
 
   watch: {

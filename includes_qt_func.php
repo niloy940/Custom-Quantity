@@ -11,25 +11,19 @@ function jk_woocommerce_quantity_input_args($args, $product)
         $args['input_value']    = $quantity;    // Starting value (we only want to affect product pages, not cart)
     }
     // $args['max_value']  = 500000;   // Maximum value
-    $args['min_value']  = $quantity;    // Minimum value
+
+    $product_id = $product->get_id();
+
+    if ($product_id == 11) {
+        $args['min_value']  = 100;    // Minimum value
+    } elseif ($product_id == 21) {
+        $args['min_value']  = 25;    // Minimum value
+    }
+
     $args['step']       = 2;    // Quantity steps
     return $args;
 }
 add_filter('woocommerce_quantity_input_args', 'jk_woocommerce_quantity_input_args', 10, 2);
-
-
-
-function qt_custom_add_to_cart()
-{
-    $cookie_quantity = (int) $_COOKIE['quantity'];
-
-    global $woocommerce;
-    foreach ($woocommerce->cart->get_cart() as $cart_item_key => $cart_item) {
-        $woocommerce->cart->set_quantity($cart_item_key, $cookie_quantity);
-    }
-}
-add_action('woocommerce_add_to_cart', 'qt_custom_add_to_cart');
-
 
 /**
  * Add custom price in cart
