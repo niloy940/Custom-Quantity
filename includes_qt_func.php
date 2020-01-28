@@ -14,9 +14,9 @@ function jk_woocommerce_quantity_input_args($args, $product)
 
     $product_id = $product->get_id();
 
-    if ($product_id == 11) {
+    if ($product_id == 348) {
         $args['min_value']  = 100;    // Minimum value
-    } elseif ($product_id == 21) {
+    } elseif ($product_id == 358) {
         $args['min_value']  = 25;    // Minimum value
     }
 
@@ -24,6 +24,19 @@ function jk_woocommerce_quantity_input_args($args, $product)
     return $args;
 }
 add_filter('woocommerce_quantity_input_args', 'jk_woocommerce_quantity_input_args', 10, 2);
+
+
+function qt_custom_add_to_cart()
+{
+    $cookie_quantity = (int) $_COOKIE['quantity'];
+
+    global $woocommerce;
+    foreach ($woocommerce->cart->get_cart() as $cart_item_key => $cart_item) {
+        $woocommerce->cart->set_quantity($cart_item_key, $cookie_quantity);
+    }
+}
+add_action('woocommerce_add_to_cart', 'qt_custom_add_to_cart');
+
 
 /**
  * Add custom price in cart
@@ -48,7 +61,7 @@ function add_custom_price($cart_object)
 
         $product_id = $cart_item['product_id'];
         // Pen Klasico
-        if ($product_id == 11) {
+        if ($product_id == 348) {
             if ($cart_quantity >= 100 && $cart_quantity <= 249) {
                 $price = 0.69;
             } elseif ($cart_quantity >= 250 && $cart_quantity <= 499) {
@@ -65,7 +78,7 @@ function add_custom_price($cart_object)
         }
 
         // Pen Artio
-        if ($product_id == 21) {
+        if ($product_id == 358) {
             if ($cart_quantity >= 25 && $cart_quantity <= 49) {
                 $price = 5.99;
             } elseif ($cart_quantity >= 50 && $cart_quantity <= 74) {

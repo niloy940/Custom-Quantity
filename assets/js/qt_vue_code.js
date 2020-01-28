@@ -63,8 +63,6 @@ Vue.component('calc', {
 
         }
 
-
-
         this.total = this.quantity * this.price;
       },
   },
@@ -72,35 +70,19 @@ Vue.component('calc', {
   props: {
     quantity: {
       type: Number,
-      required: true // my assumption
+      required: true
     },
 
     price: {
       type: Number,
-      required: true // my assumption
+      required: true
     },
 
     product_id: {
       type: Number,
-      required: true // my assumption
+      required: true
     },
   },
-
-  /*mounted() {
-    if (localStorage.quantity) {
-      this.quantity = localStorage.quantity;
-    }
-  },
-  watch: {
-    quantity(newQuantity) {
-      localStorage.quantity = newQuantity;
-    }
-  }*/
-
-  // created() {
-    // this.id = document.querySelector('.input-text.qty.text').getAttribute('value')
-    //     .replace("product-", "");
-  // }
 
   mounted() {
     var cvalue = this.quantity;
