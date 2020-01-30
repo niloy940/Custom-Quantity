@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Custom Quantity
  * Description: Woocommerce Product Page Development.
- * Version: 1.7.2
+ * Version: 1.0.2
  * Author: Niloy Quazi
  * Author URI: https://www.linkedin.com/in/niloyquazi/
  */

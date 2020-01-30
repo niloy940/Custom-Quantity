@@ -2,7 +2,7 @@ Vue.component('calc', {
     template: `
     <div>
         Quantity :
-        <input type="number" v-model="quantity" @keyup="calclulation">
+        <input type="number" v-model="quantity" @keyup="calculation">
         x € {{ price }} = € {{ total }}
 
         <br>
@@ -19,10 +19,10 @@ Vue.component('calc', {
     },
 
   methods: {
-      calclulation() {
+      calculation() {
         if (this.product_id == 11) {
           if (this.quantity >= 100 && this.quantity <= 249) {
-            this.price = 0.69;
+            this.price = this.price;
           } else if(this.quantity >= 250 && this.quantity <= 499) {
               this.price = 0.59;
           } else if(this.quantity >= 500 && this.quantity <= 999) {
@@ -30,7 +30,7 @@ Vue.component('calc', {
           } else if(this.quantity >= 1000) {
               this.price = 0.49;
           } else {
-              this.price = 0.69;
+              this.price = this.price;
           }
 
           if (this.quantity < 100) {
@@ -43,7 +43,7 @@ Vue.component('calc', {
         } else if (this.product_id == 21) {
 
           if (this.quantity >= 25 && this.quantity <= 49) {
-            this.price = 5.99;
+            this.price = this.price;
           } else if(this.quantity >= 50 && this.quantity <= 74) {
               this.price = 5.49;
           } else if(this.quantity >= 75 && this.quantity <= 99) {
@@ -51,7 +51,7 @@ Vue.component('calc', {
           } else if(this.quantity >= 100) {
               this.price = 4.99;
           } else {
-              this.price = 5.99;
+              this.price = this.price;
           }
 
           if (this.quantity < 25) {
@@ -64,6 +64,8 @@ Vue.component('calc', {
         }
 
         this.total = this.quantity * this.price;
+
+        document.querySelector('[name="quantity"]').value = this.quantity;
       },
   },
 
@@ -89,7 +91,7 @@ Vue.component('calc', {
     var cname = "quantity";
     document.cookie = cname + "=" + cvalue;
 
-    this.calclulation();
+    this.calculation();
   },
 
   watch: {

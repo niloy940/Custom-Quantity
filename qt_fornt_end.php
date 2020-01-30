@@ -15,6 +15,8 @@ function qt_show_quantity()
         $quantity = 100;
     } elseif ($product_id == 21) {
         $quantity = 25;
+    } else {
+        $quantity = 1;
     }
 
     echo "<div id='quantity_el'>"
