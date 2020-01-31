@@ -14,7 +14,7 @@ function jk_woocommerce_quantity_input_args($args, $product)
 
     $args['min_value']  = $quantity;
 
-    $args['step']       = 2;    // Quantity steps
+    $args['step']       = 1;    // Quantity steps
     return $args;
 }
 add_filter('woocommerce_quantity_input_args', 'jk_woocommerce_quantity_input_args', 10, 2);

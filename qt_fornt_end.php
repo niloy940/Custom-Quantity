@@ -25,4 +25,4 @@ function qt_show_quantity()
     .'</div>'
     .'<br>';
 }
-add_action('woocommerce_before_add_to_cart_button', 'qt_show_quantity');
+add_action('woocommerce_before_add_to_cart_form', 'qt_show_quantity');
