@@ -7,7 +7,12 @@ function qt_show_quantity()
 
     global $product;
     $product_id = $product->get_id();
-    $sale_price = $product->get_sale_price();
+
+    if ($product->is_type('variable')) {
+        $sale_price = $product->get_variation_price();
+    } else {
+        $sale_price = $product->get_sale_price();
+    }
 
     global $quantity;
 
